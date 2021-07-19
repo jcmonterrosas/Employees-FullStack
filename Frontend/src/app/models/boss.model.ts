@@ -3,6 +3,7 @@ import { Deserealizable } from './deserializable.model'
 
 export class Boss implements Deserealizable {
     id?: any;
+    bossId?: any;
     fullname?: string;
     function?: string;
     employees?: Employee[];

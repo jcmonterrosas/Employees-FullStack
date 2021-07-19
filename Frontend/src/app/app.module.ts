@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
-import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -14,7 +13,6 @@ import { HeaderComponent } from './components/header/header.component';
   declarations: [
     AppComponent,
     AddEmployeeComponent,
-    EmployeeDetailsComponent,
     EmployeesListComponent,
     HeaderComponent
   ],

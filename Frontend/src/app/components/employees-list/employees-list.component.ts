@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Boss } from 'src/app/models/boss.model'
-import { Employee } from 'src/app/models/employee.model';
 import { EmployeeService } from 'src/app/services/employee.service'
 
 @Component({
@@ -13,6 +12,7 @@ export class EmployeesListComponent implements OnInit {
   employees?: Boss[];
   currentEmployee?: Boss;
   currentIndex = -1;
+  hasEmployees?= 0;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -20,29 +20,43 @@ export class EmployeesListComponent implements OnInit {
     this.retrieveEmployees();
   }
 
-  retrieveEmployees(): void{
+  retrieveEmployees(): void {
     this.employeeService.getAll()
-    .subscribe(
+      .subscribe(
+        data => {
+          this.employees = data;
+          // console.log(data)
+        },
+        error => {
+          console.log(error)
+        });
+  }
+
+  refreshList(): void {
+    this.retrieveEmployees();
+    this.currentEmployee = new Boss;
+    this.currentIndex = -1;
+    this.hasEmployees = 0;
+  }
+
+
+  setActiveEmployee(employee: Boss, index: number): void {
+    this.currentEmployee = employee;
+    console.log(this.currentEmployee)
+    this.hasEmployees = this.currentEmployee.employees?.length;
+    this.currentIndex = index;
+  }
+
+  setBoss(id: any, boss: any): void {
+    console.log(id, { bossId: Number(boss) })
+    this.employeeService.setBoss(id, { bossId: boss }).subscribe(
       data => {
-        this.employees = data;
         console.log(data)
+        this.refreshList();
       },
       error => {
         console.log(error)
       });
-  }
-
-  refreshList(): void{
-    this.retrieveEmployees();
-    this.currentEmployee = new Boss;
-    this.currentIndex = -1;
-  }
-
-  
-  setActiveEmployee(employee: Boss, index: number): void {
-    this.currentEmployee = employee;
-    console.log(this.currentEmployee)
-    this.currentIndex = index;
   }
 
 }

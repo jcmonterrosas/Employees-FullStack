@@ -1,7 +1,7 @@
 .list {
   text-align: left;
-  max-width: 50vw;
-  margin: auto;
+  /* max-width: 50vw; */
+  margin: 5vh 10vw;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 2px 2px 4px 0 rgb(50 50 50 / 30%);
@@ -9,32 +9,50 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  font-family: 'Dtl Argo', Helvetica;
+  font-family: "Dtl Argo", Helvetica;
   color: #435168;
-  transition: all 1s ease;
 }
 
-.employees ul{
-    display: block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.employees ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.employees ul li{
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #002c76;
-    padding: 2vh 2vw;
-    position: relative;
-    border: 1px solid rgb(50 50 50 / 30%);
-    margin-top: 0.5em;
+.employees ul li {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #002c76;
+  padding: 2vh 2vw;
+  position: relative;
+  border: 1px solid rgb(50 50 50 / 30%);
+  margin-top: 0.5em;
 }
 
-.employees> ul li.active, .employees> ul li:hover {
-    box-shadow: 2px 2px 2px 1px #e72f35;
-    cursor: pointer;
+.employees > ul li.active,
+.employees > ul li:hover {
+  box-shadow: 2px 2px 2px 1px #e72f35;
+  cursor: pointer;
 }
 
+.details {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.selectBoss select {
+  display: block;
+  width: 80%;
+  appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: medium;
+  margin: 1em 0;
+  box-shadow: 2px 2px 4px 0 #f07b05;
+  padding: 0.7em 1em;
+  outline: none;
+}

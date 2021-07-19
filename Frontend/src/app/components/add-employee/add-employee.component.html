@@ -1,1 +1,25 @@
-<p>add-employee works!</p>
+<form (ngSubmit)="onSubmit()">
+    <h2>Register a new employee</h2>
+    <div>
+        <label for="">Fullname</label>
+        <input type="text" name="fullname" id="" [(ngModel)]="fullname">
+    </div>
+
+    <div>
+        <label for="">Function</label>
+        <input type="text" name="function" id="" [(ngModel)]="function">
+    </div>
+
+    <!-- <div>
+        <label for="">Boss</label>
+        <input type="text" name="boss" id="" [(ngModel)]="boss">
+    </div> -->
+
+    <div class="submit">
+        <input type="submit" value="Submit">
+    </div>
+
+    <div *ngIf="response">
+        <h4>Employee {{response.fullname}} was submitted successfully!</h4>
+    </div>
+</form>

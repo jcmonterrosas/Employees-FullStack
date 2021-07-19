@@ -1,45 +1,56 @@
 <div class="list">
-    <div class="employees">
-      <h2>Employees List</h2>
-      <ul>
-        <li
-          *ngFor="let employee of employees; let i = index"
-          [class.active]="i == currentIndex"
-          (click)="setActiveEmployee(employee, i)"
-        >
-          {{ employee.fullname }}
-        </li>
-      </ul>
-    </div>
-    <div class="details">
-      <div *ngIf="currentEmployee">
-        <h2>Employee Details</h2>
+  <div class="employees">
+    <h2>Employees List</h2>
+    <ul>
+      <li *ngFor="let employee of employees; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveEmployee(employee, i)">
+        {{ employee.fullname }}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <div *ngIf="currentEmployee">
+      <h2>Employee Details</h2>
+      <div class="details">
         <div>
-          <label><strong>Fullname:</strong></label> {{ currentEmployee.fullname }}
-        </div>
-        <div>
-          <label><strong>Function:</strong></label>
-          {{ currentEmployee.function }}
-        </div>
-        <div>
+          <div>
+            <label><strong>Fullname:</strong></label> {{ currentEmployee.fullname }}
+          </div>
+          <div>
+            <label><strong>Function:</strong></label>
+            {{ currentEmployee.function }}
+          </div>
+          <div *ngIf="hasEmployees != undefined && hasEmployees > 0">
             <label><strong>Employees in charge:</strong></label>
             <ul>
-                <li
-                  *ngFor="let employee of currentEmployee.employees"
-                >
-                  {{ employee.fullname }}
-                </li>
-              </ul>
+              <li *ngFor="let employee of currentEmployee.employees">
+                {{ employee.fullname }}
+              </li>
+            </ul>
+          </div>
         </div>
-
-        <a routerLink="/{{ currentEmployee.id }}">
-          Edit
-        </a>
-      </div>
-  
-      <div *ngIf="!currentEmployee">
-        <br />
-        <p>Please click on a Employee...</p>
+        <div>
+          <div *ngIf="currentEmployee.bossId == null" class="selectBoss">
+            <label><strong>Set boss:</strong></label>
+            <select #mySelect (change)="setBoss(currentEmployee.id, mySelect.value)">
+              <option [value]="item.id" *ngFor="let item of employees" [selected]="currentEmployee.bossId === item.id">
+                {{item.fullname}} </option>
+            </select>
+          </div>
+          <div *ngIf="currentEmployee.bossId" class="selectBoss">
+            <label><strong>Set a new boss:</strong></label>
+            <select #mySelect (change)="setBoss(currentEmployee.id, mySelect.value)">
+              <option [value]="item.id" *ngFor="let item of employees" [selected]="currentEmployee.bossId === item.id">
+                {{item.fullname}} </option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div *ngIf="!currentEmployee">
+      <br />
+      <p>Please click on an Employee...</p>
+    </div>
   </div>
+</div>

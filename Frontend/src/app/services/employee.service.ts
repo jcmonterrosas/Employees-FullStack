@@ -30,7 +30,7 @@ export class EmployeeService {
   }
 
   setBoss(id: any, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, data, this.httpOptions);
+    return this.http.put(`${this.baseUrl}${id}`, data, this.httpOptions);
   }
 
 }

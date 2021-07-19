@@ -17,7 +17,7 @@ exports.create = (req, res) => {
         function: req.body.function
     };
 
-    Employee.create(employee)
+    Employee.findOrCreate({ where: { fullname: employee.fullname, function: employee.function}})
         .then((data) => {
             res.send(data);
         })

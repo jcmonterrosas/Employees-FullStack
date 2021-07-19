@@ -1,6 +1,7 @@
 import { Component, IterableDiffers, OnInit } from '@angular/core';
 import { Boss } from 'src/app/models/boss.model';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-employee',
@@ -8,31 +9,32 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-  
+
   fullname?: string;
   function?: string;
-  // boss: string;
-  response = new Boss;
-  
+  submitted = false;
+  isAlreadyExists = false;
+  employee = new Boss;
+
   constructor(private EmployeeService: EmployeeService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    const employee = new Boss;
-    employee.fullname = this.fullname;
-    employee.function = this.function;
-    // employee.bossId = Number(this.boss);
+    this.employee.fullname = this.fullname;
+    this.employee.function = this.function;
 
-    this.EmployeeService.create(employee)
+    this.EmployeeService.create(this.employee)
       .subscribe(
         response => {
           console.log(response);
-          this.response = response;
+          this.submitted = response[1];
+          this.isAlreadyExists = !response[1];
         },
         error => {
           console.log(error);
         });
+
   }
 }

@@ -19,7 +19,11 @@
         <input type="submit" value="Submit">
     </div>
 
-    <div *ngIf="response">
-        <h4>Employee {{response.fullname}} was submitted successfully!</h4>
+    <div *ngIf="submitted">
+        <h4>Employee was submitted successfully!</h4>
+    </div>
+
+    <div *ngIf="isAlreadyExists">
+        <h4>This employee already exists!</h4>
     </div>
 </form>

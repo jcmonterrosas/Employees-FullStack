@@ -14,14 +14,14 @@ export class EmployeesListComponent implements OnInit {
   currentIndex = -1;
   hasEmployees?= 0;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private EmployeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.retrieveEmployees();
   }
 
   retrieveEmployees(): void {
-    this.employeeService.getAll()
+    this.EmployeeService.getAll()
       .subscribe(
         data => {
           this.employees = data;
@@ -49,7 +49,7 @@ export class EmployeesListComponent implements OnInit {
 
   setBoss(id: any, boss: any): void {
     console.log(id, { bossId: Number(boss) })
-    this.employeeService.setBoss(id, { bossId: boss }).subscribe(
+    this.EmployeeService.setBoss(id, { bossId: boss }).subscribe(
       data => {
         console.log(data)
         this.refreshList();

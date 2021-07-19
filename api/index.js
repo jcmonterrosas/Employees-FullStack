@@ -4,11 +4,11 @@ const cors = require("cors");
 const app = express();
 
 const db = require("./models");
-// db.sequelize.sync();
+db.sequelize.sync();
 //development only
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.");
-  });
+// db.sequelize.sync({ force: true }).then(() => {
+//     console.log("Drop and re-sync db.");
+//   });
 
 app.use(cors());
 app.use(express.json());

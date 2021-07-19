@@ -10,7 +10,7 @@ exports.create = (req, res) => {
         return;
     }
 
-    console.log(req.body);
+    // console.log(req.body);
 
     const employee = {
         fullname: req.body.fullname,

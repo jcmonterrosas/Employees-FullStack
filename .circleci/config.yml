@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:  
-    working_directory: ~/Employees-Fullstack/api
+    # working_directory: ~/Employees-Fullstack/api
     docker:
       - image: circleci/node:14.17.3
     steps:

@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
       function: {
         type: Sequelize.STRING
       }
+    },
+    {
+      timestamps: false,
     });
   
     return Employee;
